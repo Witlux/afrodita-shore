@@ -1,0 +1,180 @@
+<head>
+
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="menu-btn">
+    <i class="fas fa-bars fa-2x"></i>
+  </div>
+
+  <div class="container">
+    <nav class="nav-main">
+      <img src="img/hazbin/logo.jpeg" alt="TechNews Logo" class="nav-brand">->
+      <ul class="nav-menu">
+        <li>
+          <a href="index.html">Inicio</a>
+        </li>
+        <li>
+          <a href="#">Comercio</a>
+        </li>
+        <li>
+          <a href="#">Exportacion</a>
+        </li>
+        <li>
+          <a href="#">Pedidos</a>
+        </li>
+        <li>
+          <a href="#">Donacion</a>
+        </li>
+        <li>
+          <a href="#">Cuenta</a>
+        </li>
+      </ul>
+    </nav>
+    <hr>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda en Línea</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        #productos {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        #productos > div {
+            flex: 1 1 30%;
+            box-sizing: border-box;
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        #productos img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #carrito {
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        #listaCarrito li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+
+        #listaCarrito img {
+            max-width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tienda en Línea</h1>
+    
+    <h2>Productos</h2>
+    <div id="productos">
+        <div>
+            <h3>Producto 1</h3>
+            <img src="img/hazbin/1 tarjeta.jpg" alt="Producto 1">
+            <p>Precio: $10.00</p>
+            <button onclick="añadirAlCarrito('Producto 1', 10.00, 'img/hazbin/1 tarjeta.jpg')">Añadir al carrito</button>
+        </div>
+        <div>
+            <h3>Producto 2</h3>
+            <img src="img/hazbin/2 tarejta.jpg" alt="Producto 2">
+            <p>Precio: $20.00</p>
+            <button onclick="añadirAlCarrito('Producto 2', 20.00, 'img/hazbin/2 tarejta.jpg')">Añadir al carrito</button>
+        </div>
+        <div>
+            <h3>Producto 3</h3>
+            <img src="img/hazbin/3 tarjeta.jpg" alt="Producto 3">
+            <p>Precio: $30.00</p>
+            <button onclick="añadirAlCarrito('Producto 3', 30.00, 'img/hazbin/3 tarjeta.jpg')">Añadir al carrito</button>
+        </div>
+    </div>
+
+    <h2>Carrito de Compras</h2>
+    <div id="carrito">
+        <ul id="listaCarrito"></ul>
+        <p>Total: $<span id="totalCarrito">0.00</span></p>
+        <button onclick="comprar()">Comprar</button>
+    </div>
+    <script>
+        let carrito = [];
+        let total = 0;
+
+        function añadirAlCarrito(nombre, precio, imagen) {
+            carrito.push({ nombre: nombre, precio: precio, imagen: imagen });
+            total += precio;
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            const listaCarrito = document.getElementById('listaCarrito');
+            const totalCarrito = document.getElementById('totalCarrito');
+
+            listaCarrito.innerHTML = '';
+            carrito.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<img src="${item.imagen}" alt="${item.nombre}"> ${item.nombre} - $${item.precio.toFixed(2)}`;
+                listaCarrito.appendChild(li);
+            });
+
+            totalCarrito.textContent = total.toFixed(2);
+        }
+
+        function comprar() {
+            if (carrito.length === 0) {
+                alert('El carrito está vacío.');
+                return;
+            }
+
+            // Aquí puedes añadir lógica adicional para procesar la compra
+            alert(`Compra realizada por un total de $${total.toFixed(2)}.`);
+
+            // Reiniciar el carrito
+            carrito = [];
+            total = 0;
+            actualizarCarrito();
+        }
+    </script>
+</body>
+</html>
